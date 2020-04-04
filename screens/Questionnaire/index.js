@@ -1,5 +1,7 @@
 import React from 'react';
-import {Button, StyleSheet, Text, TextInput, View} from "react-native";
+import {StyleSheet, Text, TextInput, View} from "react-native";
+import {Button} from 'react-native-elements';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 const questions = [
     {
@@ -27,12 +29,6 @@ const questions = [
         options: ["No"],
         placeholder: "If so, what kind"
     },
-    {
-        id: 5,
-        question: "How physically active are you (hours/month)?",
-        type: "input",
-        placeholder: " Enter value"
-    }
 ];
 
 const QuestionnaireScreen = ({navigation}) => {
@@ -82,9 +78,17 @@ const QuestionnaireScreen = ({navigation}) => {
 
             <View>
                 <Button
-                    title="Save Load more questions"
-                    onPress={() => navigation.navigate('ThankYou')}
+                    icon={
+                        <Icon
+                            name="save"
+                            size={15}
+                            color="white"
+                        />
+                    }
+                    iconLeft
+                    title=" Save and load more questions"
                 />
+
             </View>
         </View>
     );
