@@ -1,11 +1,24 @@
-import {Text, View} from "react-native";
+import React from 'react';
+import {Button, StyleSheet, View} from "react-native";
 
-const WelcomeScreen = () => {
+const WelcomeScreen = ({ navigation }) => {
     return (
-        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <Text>Welcome2 Screen</Text>
+        <View style={styles.container}>
+            <Button
+                title="Start with survey"
+                onPress={() => navigation.navigate('Questionnaire')}
+            />
         </View>
     );
 };
 
 export default WelcomeScreen;
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: 'rgba(20,146,135,.5)',
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+});
