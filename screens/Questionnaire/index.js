@@ -1,6 +1,6 @@
 import React from 'react';
-import {StyleSheet, Text, View} from "react-native";
-import {Button, Input} from 'react-native-elements';
+import {StyleSheet, Text, TextInput, View} from "react-native";
+import {Button} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import RadioForm from 'react-native-simple-radio-button';
 
@@ -72,10 +72,11 @@ const QuestionnaireScreen = ({navigation}) => {
 
                             {q.type === "input" && (
                                 <View>
-                                    <Input
+                                    <TextInput
+                                        style={styles.inputField}
                                         placeholder={q.placeholder}
-                                        containerStyle={styles.inputField}
-                                        //onChangeText={text => onChangeText(text)}
+                                        // onChangeText={text => onChangeText(text)}
+                                        // value={value}
                                     />
                                 </View>)
                             }
@@ -93,10 +94,16 @@ const QuestionnaireScreen = ({navigation}) => {
                                         buttonStyle={{}}
                                         //onPress={(value) => {this.setState({value:value})}}
                                     />
-                                    <Input
+                                    {/*<Input*/}
+                                    {/*    placeholder={q.placeholder}*/}
+                                    {/*    inputStyle={styles.inputField}*/}
+                                    {/*    //onChangeText={text => onChangeText(text)}*/}
+                                    {/*/>*/}
+                                    <TextInput
+                                        style={styles.inputField}
                                         placeholder={q.placeholder}
-                                        containerStyle={styles.inputField}
-                                        //onChangeText={text => onChangeText(text)}
+                                        // onChangeText={text => onChangeText(text)}
+                                        // value={value}
                                     />
                                 </View>)
                             }
@@ -111,12 +118,13 @@ const QuestionnaireScreen = ({navigation}) => {
                     icon={
                         <Icon
                             name="save"
-                            size={15}
+                            size={20}
                             color="white"
                         />
                     }
                     iconLeft
-                    title=" Save and load more questions"
+                    title="  Save & load more questions"
+                    buttonStyle={styles.btn}
                 />
             </View>
         </View>
@@ -140,6 +148,19 @@ const styles = StyleSheet.create({
         paddingBottom: 10
     },
     inputField: {
-        paddingBottom: 5
-    }
+        height: 30,
+        borderColor: 'gray',
+        paddingLeft: 10,
+        marginBottom: 10,
+        borderTopWidth: 0,
+        borderLeftWidth: 0,
+        borderRightWidth: 0,
+        borderBottomWidth: 1,
+    },
+    btn: {
+        backgroundColor: '#36a0fc',
+        borderRadius: 10,
+        paddingLeft: 20,
+        paddingRight: 20
+    },
 });
