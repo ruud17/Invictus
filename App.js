@@ -1,5 +1,4 @@
 import React from 'react';
-import {Button, StyleSheet, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import WelcomeScreen from "./screens/Welcome";

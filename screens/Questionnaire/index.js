@@ -36,18 +36,6 @@ const questions = [
         type: "input",
         placeholder: " hours/month"
     },
-    {
-        id: 5,
-        question: "How physically active are you?",
-        type: "input",
-        placeholder: " hours/month"
-    },
-    {
-        id: 5,
-        question: "How physically active are you?",
-        type: "input",
-        placeholder: " hours/month"
-    },
 ];
 
 const QuestionnaireScreen = ({navigation}) => {
