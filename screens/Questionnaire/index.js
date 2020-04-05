@@ -1,7 +1,8 @@
 import React from 'react';
-import {StyleSheet, Text, TextInput, View} from "react-native";
-import {Button} from 'react-native-elements';
+import {StyleSheet, Text, View} from "react-native";
+import {Button, Input} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import RadioForm from 'react-native-simple-radio-button';
 
 const questions = [
     {
@@ -29,9 +30,32 @@ const questions = [
         options: ["No"],
         placeholder: "If so, what kind"
     },
+    {
+        id: 5,
+        question: "How physically active are you?",
+        type: "input",
+        placeholder: " hours/month"
+    },
+    {
+        id: 5,
+        question: "How physically active are you?",
+        type: "input",
+        placeholder: " hours/month"
+    },
+    {
+        id: 5,
+        question: "How physically active are you?",
+        type: "input",
+        placeholder: " hours/month"
+    },
 ];
 
 const QuestionnaireScreen = ({navigation}) => {
+
+    const adjustRadioButtonLabels = (values) => (
+        values.map(v => ({label: v, value: v}))
+    );
+
     return (
         <View style={styles.container}>
             <View>
@@ -42,31 +66,49 @@ const QuestionnaireScreen = ({navigation}) => {
 
                             {q.type === "options" && (
                                 <View style={styles.questionOptions}>
-                                    {q.options.map(option => <Text style={styles.questionSingleOption}
-                                                                   key={option}> {option} </Text>)}
+                                    <View>
+                                        <RadioForm
+                                            radio_props={adjustRadioButtonLabels(q.options)}
+                                            initial={0}
+                                            borderWidth={0.5}
+                                            //buttonInnerColor={'#e74c3c'}
+                                            // buttonOuterColor={this.state.value3Index === i ? '#2196f3' : '#000'}
+                                            buttonSize={8}
+                                            buttonOuterSize={18}
+                                            buttonStyle={{}}
+                                            //onPress={(value) => {this.setState({value:value})}}
+                                        />
+                                    </View>
                                 </View>)
                             }
 
                             {q.type === "input" && (
                                 <View>
-                                    <TextInput
-                                        style={styles.textInput}
+                                    <Input
                                         placeholder={q.placeholder}
-                                        // onChangeText={text => onChangeText(text)}
-                                        // value={value}
+                                        containerStyle={styles.inputField}
+                                        //onChangeText={text => onChangeText(text)}
                                     />
                                 </View>)
                             }
 
                             {q.type === "optionsWithInput" && (
                                 <View style={styles.questionOptions}>
-                                    {q.options.map(option => <Text style={styles.questionSingleOption}
-                                                                   key={option}> {option} </Text>)}
-                                    <TextInput
-                                        style={styles.textInput}
+                                    <RadioForm
+                                        radio_props={adjustRadioButtonLabels(q.options)}
+                                        initial={0}
+                                        borderWidth={0.5}
+                                        //buttonInnerColor={'#e74c3c'}
+                                        // buttonOuterColor={this.state.value3Index === i ? '#2196f3' : '#000'}
+                                        buttonSize={8}
+                                        buttonOuterSize={18}
+                                        buttonStyle={{}}
+                                        //onPress={(value) => {this.setState({value:value})}}
+                                    />
+                                    <Input
                                         placeholder={q.placeholder}
-                                        // onChangeText={text => onChangeText(text)}
-                                        // value={value}
+                                        containerStyle={styles.inputField}
+                                        //onChangeText={text => onChangeText(text)}
                                     />
                                 </View>)
                             }
@@ -88,7 +130,6 @@ const QuestionnaireScreen = ({navigation}) => {
                     iconLeft
                     title=" Save and load more questions"
                 />
-
             </View>
         </View>
     );
@@ -103,24 +144,14 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     questionTitle: {
-        fontSize: 18,
+        fontSize: 16,
         fontWeight: "bold",
-        paddingTop: 10
     },
     questionOptions: {
-        display: "flex",
-        //flexDirection:"row",
         paddingTop: 5,
+        paddingBottom: 10
     },
-    questionSingleOption: {
-        paddingTop: 5,
-        fontSize: 16
-    },
-    textInput: {
-        marginTop: 5,
-        height: 30,
-        borderColor: 'black',
-        borderWidth: 1,
-        borderRadius: 10
-    },
+    inputField: {
+        paddingBottom: 5
+    }
 });
